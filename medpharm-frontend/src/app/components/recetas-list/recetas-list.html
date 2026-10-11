@@ -1,0 +1,39 @@
+<div class="dashboard-container">
+  <h2>Gestión de Recetas</h2>
+
+  <a routerLink="/nueva-receta" class="btn btn-nueva">+ Nueva Receta</a>
+
+  <select #filtro (change)="cambiarFiltro(filtro.value)">
+    <option value="TODAS">Todas</option>
+    <option value="PENDIENTE">Pendientes</option>
+    <option value="DESPACHADA">Despachadas</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (receta of recetasFiltradas(); track receta.id) {
+        <tr>
+          <td>{{ receta.id }}</td>
+          <td>{{ receta.pacienteNombre }}</td>
+          <td><span class="badge {{ receta.estado }}">{{ receta.estado }}</span></td>
+          <td>
+            @if (receta.estado === 'PENDIENTE') {
+              <button class="btn-despachar" (click)="cambiarEstado(receta.id, 'DESPACHADA')">Despachar</button>
+              <button class="btn-cancelar" (click)="cambiarEstado(receta.id, 'CANCELADA')">Cancelar</button>
+            }
+          </td>
+        </tr>
+      } @empty {
+        <tr><td colspan="4">No hay recetas con ese estado.</td></tr>
+      }
+    </tbody>
+  </table>
+</div>

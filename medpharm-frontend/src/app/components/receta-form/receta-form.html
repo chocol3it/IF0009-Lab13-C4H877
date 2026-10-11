@@ -1,0 +1,52 @@
+<div class="form-container">
+  <h2>Crear Nueva Receta Médica</h2>
+
+  <a routerLink="/recetas" class="btn btn-volver">← Volver</a>
+
+  <form [formGroup]="recetaForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label>Nombre del Paciente:</label>
+      <input type="text" formControlName="pacienteNombre" placeholder="Ej. Juan Pérez">
+    </div>
+
+    <hr>
+    <h3>Medicamentos Prescritos</h3>
+
+    <div formArrayName="detalles">
+
+      @for (detalle of detalles.controls; track $index) {
+
+        <div [formGroupName]="$index" class="renglon-medicamento">
+
+          <div formGroupName="medicamento">
+            <label>ID Medicamento:</label>
+            <input type="number" formControlName="id" placeholder="ID">
+          </div>
+
+          <label>Cantidad:</label>
+          <input type="number" formControlName="cantidad" placeholder="Cantidad">
+          @if (detalle.get('cantidad')?.hasError('cantidadInvalida')) {
+            <small>La cantidad debe ser un número entero mayor a 0.</small>
+          }
+
+          <label>Dosis indicada:</label>
+          <input type="text" formControlName="dosisIndicada" placeholder="Ej. 1 tableta cada 8 horas">
+
+          <button type="button" class="btn-cancelar" (click)="removerMedicamento($index)">Eliminar Renglón</button>
+        </div>
+
+      }
+    </div>
+
+    <button type="button" (click)="agregarMedicamento()" class="btn-agregar">
+      + Agregar Otro Medicamento
+    </button>
+
+    <hr>
+    <button type="submit" [disabled]="recetaForm.invalid" class="btn-guardar">
+      Guardar Receta Completa
+    </button>
+
+  </form>
+</div>

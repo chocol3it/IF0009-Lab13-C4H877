@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+  <h2>MedPharm Express</h2>
+
+  <div>
+    <label>Usuario:</label>
+    <input type="text" formControlName="username">
+  </div>
+
+  <div>
+    <label>Contraseña:</label>
+    <input type="password" formControlName="password">
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+
+</form>

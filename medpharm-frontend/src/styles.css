@@ -1,0 +1,96 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.dashboard-container,
+.form-container,
+.login-form {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  max-width: 350px;
+  margin-top: 60px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: #dc2626;
+}
+
+small {
+  color: #dc2626;
+}
+
+button,
+.btn {
+  display: inline-block;
+  padding: 8px 14px;
+  margin: 10px 5px 0 0;
+  border: none;
+  border-radius: 4px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-nueva { background: #16a34a; margin-bottom: 15px; }
+.btn-volver { background: #6b7280; }
+.btn-despachar { background: #16a34a; }
+.btn-cancelar { background: #dc2626; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th,
+td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background: #f1f5f9;
+}
+
+.renglon-medicamento {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #fafafa;
+}
